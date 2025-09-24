@@ -10,8 +10,16 @@ public class ExitGate {
 
     public double calculatePayment(Ticket ticket) {
         ticket.setExitTime(java.time.LocalDateTime.now());
-        long minutes = Duration.between(ticket.getEntryTime(), ticket.getExitTime()).toMinutes();
-        double rate = 2.0;
+
+        // actual code
+        // long minutes = Duration.between(ticket.getEntryTime(),
+        // ticket.getExitTime()).toMinutes();
+        // double rate = 2.0;
+
+        // for testing
+        long minutes = Duration.between(ticket.getEntryTime(), ticket.getExitTime()).getSeconds();
+        double rate = 2.0 / 60;
+
         if (ticket.getSpot().getSize().equals(SpotSize.BUS))
             rate *= 1.5;
         if (ticket.getVehicle().isElectric() && ticket.getSpot().isEVOnly()) {
